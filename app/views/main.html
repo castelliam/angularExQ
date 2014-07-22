@@ -1,0 +1,30 @@
+<header>
+  <header-Directive></header-Directive>
+  <h4>Check Out The Team</h4>
+</header>
+<nav>
+  <a href="#/newView">Example Page</a>
+</nav>
+<br>
+<input type="text" placeholder="search" ng-model="name">
+<br>
+<br>
+
+<ul ng-repeat="newPerson in teamMembers | filter:name | orderBy:name">
+  <li>
+    <span ng-hide="editing" ng-click="editing = true">{{newPerson.name}} | {{newPerson.position}}</span>
+    <form ng-show="editing" ng-submit="editing = false">
+      <label>Name:</label>
+      <input type="text" ng-model="newPerson.name"/>
+      <label>Position:</label>
+      <input type="text" ng-model="newPerson.position"/>
+      <br/>
+      <button type="submit">Save</button>
+      <button ng-click="deleteTeamMember(person)">Delete</button>
+    </form>
+  </li>
+</ul>
+<br>
+<input type="text" placeholder="name" ng-model="newPerson.name">
+<input type="text" placeholder="position" ng-model="newPerson.position">
+<button ng-click="addTeamMember(newPerson)">Add Member</button>
